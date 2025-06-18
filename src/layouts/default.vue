@@ -2,6 +2,7 @@
 import Navbar from '@/components/Navbar.vue'
 import AppFooter from '@/components/AppFooter.vue';
 import Button from '@/components/Button.vue'
+
 </script>
 <template>
   <v-app>
