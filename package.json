@@ -37,5 +37,16 @@
     "vite-plugin-vuetify": "^2.1.1",
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.2.8"
+  },
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client"]  
   }
 }
