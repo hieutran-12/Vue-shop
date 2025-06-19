@@ -4,7 +4,8 @@ import HoverMenu from './HoverMenu.vue'
 </script>
 <template>
   <v-app-bar color="white" dark height="64" class="mt-8">
-    <HoverMenu title="Home">
+    <v-spacer></v-spacer>
+    <HoverMenu title="Home" class="menu-btn">
       <v-list class="d-flex flex-row">
         <v-list-item>
           Hahaha
@@ -53,7 +54,7 @@ import HoverMenu from './HoverMenu.vue'
                              
       </v-list>
     </HoverMenu>|
-        <HoverMenu title="Shop">
+        <HoverMenu title="Shop" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
@@ -68,7 +69,7 @@ import HoverMenu from './HoverMenu.vue'
         </v-list-item>                        
       </v-list>
     </HoverMenu>|
-    <HoverMenu title="About">
+    <HoverMenu title="About" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
@@ -83,7 +84,7 @@ import HoverMenu from './HoverMenu.vue'
         </v-list-item>                        
       </v-list>
     </HoverMenu>|
-        <HoverMenu title="Blogs">
+        <HoverMenu title="Blogs" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
@@ -98,7 +99,7 @@ import HoverMenu from './HoverMenu.vue'
         </v-list-item>                        
       </v-list>
     </HoverMenu>|
-    <HoverMenu title="Page">
+    <HoverMenu title="Page" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
@@ -116,7 +117,7 @@ import HoverMenu from './HoverMenu.vue'
     <v-spacer></v-spacer>
     <v-toolbar-title style="text-align: center;">My website</v-toolbar-title>
     <v-spacer></v-spacer>
-    <HoverMenu title="USD, $" icon="mdi-chevron-down">
+    <HoverMenu title="USD, $" icon="mdi-chevron-down" class="menu-btn">
       <v-list>
         <v-list-item>
           <v-list-item-title>USD</v-list-item-title>
@@ -139,6 +140,7 @@ import HoverMenu from './HoverMenu.vue'
     <v-btn icon>
       <v-icon>mdi-shopping-outline</v-icon>
     </v-btn>
+    <v-spacer></v-spacer>
   </v-app-bar> 
 </template>
 

@@ -22,7 +22,7 @@ const slides = [
 </script>
 <template>
   <v-carousel
-    height="1000"
+    height="800"
     hide-delimiter-background
     show-arrows
     cycle
@@ -70,7 +70,7 @@ const slides = [
   padding: 20px 60px;
   align-items: stretch;
   height: 100%;
-  margin-top: -120px;
+  margin-top: -50px;
 }
 
 .bander-left {
@@ -86,6 +86,8 @@ const slides = [
   object-fit: cover;
   border-radius: 8px;
 }
+
+ /* <-- Add this closing brace for .bander-left */
 
 .bander-right {
   flex: 1;
