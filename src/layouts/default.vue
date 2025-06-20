@@ -1,7 +1,34 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import AppFooter from '@/components/AppFooter.vue';
-import Button from '@/components/Button.vue'
+import NavbarScorll from '@/components/NavbarScorll.vue'
+
+const showSticky = ref(false)
+let lastScroll = window.scrollY
+
+const handleScroll = () => {
+  const currentScroll = window.scrollY
+  const scrollDiff = currentScroll - lastScroll
+
+  if (scrollDiff > 5) {
+    // Cuộn xuống hơn 5px
+    showSticky.value = true
+  } else if (scrollDiff < -5) {
+    // Cuộn lên hơn 5px
+    showSticky.value = false
+  }
+
+  lastScroll = currentScroll
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 </script>
 <template>
@@ -16,11 +43,14 @@ import Button from '@/components/Button.vue'
         </span>
       </div>
     </div>
+    <NavbarScorll
+      v-show="showSticky"
+      :class="{ 'navbar-sticky': true, 'show': showSticky }"
+    />
     <Navbar />
-    <v-main style="margin-top: 50px ;">
+    <v-main>
       <router-view />
     </v-main>
-    <Button />
     <AppFooter />
   </v-app>
 
@@ -28,6 +58,9 @@ import Button from '@/components/Button.vue'
 </template>
 
 <style scoped>
+.v-main{
+  padding: 50px 0 50px;
+}
 .marquee-bar {
   background-color: #5c6441; 
   color: white;
@@ -38,10 +71,7 @@ import Button from '@/components/Button.vue'
   display: flex;
   align-items: center;
   font-size: 14px;
-  font-weight: 500;
-  position: fixed;       
-  top: 0;                
-  left: 0;
+  font-weight: 500;    
   z-index: 1000; 
 }
 
@@ -60,4 +90,11 @@ import Button from '@/components/Button.vue'
     transform: translateX(-50%);
   }
 }
+.navbar-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
 </style>

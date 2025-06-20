@@ -26,7 +26,7 @@ const slides = [
     hide-delimiter-background
     show-arrows
     cycle
-    interval="5000"
+    interval=""
   >
     <template v-slot:prev="{ props }">
       <v-btn icon @click="props.onClick">
@@ -67,17 +67,16 @@ const slides = [
 .bander {
   display: flex;
   gap: 30px;
-  padding: 20px 60px;
   align-items: stretch;
   height: 100%;
-  margin-top: -50px;
+  margin-top: 0px;
 }
 
 .bander-left {
   flex: 1;
   padding: 20px;
   display: flex;
-  align-items: center;
+  justify-content: flex-end
 }
 
 .bander-left img {
