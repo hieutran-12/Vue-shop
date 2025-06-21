@@ -4,6 +4,7 @@ import FeaturedCategories from '@/pages/FeaturedCategories.vue'
 import DeliveryAndReturnPolicy from '@/pages/DeliveryAndReturnPolicy.vue'
 import About2 from './About2.vue';
 import Product from './Product.vue';
+import paralax from '@/pages/paralax.vue';
 
 </script>
 
@@ -13,4 +14,5 @@ import Product from './Product.vue';
     <About2/>
     <Product/>
     <DeliveryAndReturnPolicy/>
+    <paralax/>
 </template>
