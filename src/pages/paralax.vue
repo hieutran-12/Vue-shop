@@ -38,7 +38,7 @@
   height: 80px;
 }
 .content2 h1{
-    font-size: 60px;
+    font-size: 6 0px;
 }
 
 </style>

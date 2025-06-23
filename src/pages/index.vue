@@ -5,6 +5,10 @@ import DeliveryAndReturnPolicy from '@/pages/DeliveryAndReturnPolicy.vue'
 import About2 from './About2.vue';
 import Product from './Product.vue';
 import paralax from '@/pages/paralax.vue';
+import ImageUpDown from './ImageUpDown.vue';
+import FeedBack from './FeedBack.vue';
+import HoverGallery from './HoverGallery.vue';
+
 
 </script>
 
@@ -15,4 +19,7 @@ import paralax from '@/pages/paralax.vue';
     <Product/>
     <DeliveryAndReturnPolicy/>
     <paralax/>
+    <ImageUpDown/>
+    <FeedBack/>
+    <HoverGallery/>
 </template>
