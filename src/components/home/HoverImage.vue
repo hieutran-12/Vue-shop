@@ -2,8 +2,8 @@
   <v-main>
     <v-container fluid class="pa-0">
       <v-row no-gutters class="image-container">
-        <v-col 
-          v-for="(image, index) in images" 
+        <v-col
+          v-for="(image, index) in images"
           :key="index"
           :class="getImageClass(index)"
           class="image-item"
@@ -20,43 +20,35 @@
   </v-main>
 </template>
 
-<script>
-export default {
-  name: 'ImageHoverGallery',
-  data() {
-    return {
-      hoveredIndex: null,
-      images: [
-        {
-          src : new URL('@/assets/Product2/scale-image-1.jpg',import.meta.url).href,
-          title: 'Thiên Nhiên'
-        },
-        {
-          src : new URL('@/assets/Product2/scale-image-2.jpg',import.meta.url).href,
-          title: 'Thành Phố'
-        },
-        {
-          src : new URL('@/assets/Product2/scale-image-3.jpg',import.meta.url).href,
-          title: 'Rừng Cây'
-        }
-      ]
-    }
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const hoveredIndex = ref<null | number>(null)
+
+const images = [
+  {
+    src: new URL('@/assets/Product2/scale-image-1.jpg', import.meta.url).href,
+    title: 'Thiên Nhiên'
   },
-  methods: {
-    getImageClass(index) {
-      if (this.hoveredIndex === null) {
-        return 'normal-width';
-      }
-      
-      if (this.hoveredIndex === index) {
-        return 'expanded-width';
-      } else {
-        return 'compressed-width';
-      }
-    }
+  {
+    src: new URL('@/assets/Product2/scale-image-2.jpg', import.meta.url).href,
+    title: 'Thành Phố'
+  },
+  {
+    src: new URL('@/assets/Product2/scale-image-3.jpg', import.meta.url).href,
+    title: 'Rừng Cây'
   }
+]
+
+const getImageClass = (index: number) => {
+  if (hoveredIndex.value === null) {
+    return 'normal-width'
+  }
+
+  return hoveredIndex.value === index ? 'expanded-width' : 'compressed-width'
 }
 </script>
+
 
 <style scoped>
 .image-container {
@@ -76,8 +68,6 @@ export default {
   height: 60vh;
   object-fit: cover;
 }
-
-
 
 .image-overlay {
   position: absolute;

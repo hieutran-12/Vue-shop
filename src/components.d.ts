@@ -8,14 +8,24 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    About: typeof import('./components/home/About.vue')['default']
+    About2: typeof import('./components/home/About2.vue')['default']
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppHeader: typeof import('./components/Navbar.vue')['default']
     Button: typeof import('./components/Button.vue')['default']
     copy: typeof import('./components/AppFooter copy.vue')['default']
+    DeliveryAndReturnPolicy: typeof import('./components/home/DeliveryAndReturnPolicy.vue')['default']
+    FeaturedCategories: typeof import('./components/home/FeaturedCategories.vue')['default']
+    FeedBack: typeof import('./components/home/FeedBack.vue')['default']
+    HoverImage: typeof import('./components/home/HoverImage.vue')['default']
     HoverMenu: typeof import('./components/HoverMenu.vue')['default']
+    ImageUpDown: typeof import('./components/home/ImageUpDown.vue')['default']
     Navbar: typeof import('./components/Navbar.vue')['default']
     NavbarScorll: typeof import('./components/NavbarScorll.vue')['default']
+    Paralax: typeof import('./components/home/paralax.vue')['default']
+    Product: typeof import('./components/home/Product.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SliderProduct: typeof import('./components/home/SliderProduct.vue')['default']
   }
 }

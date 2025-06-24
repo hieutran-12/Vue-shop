@@ -5,6 +5,7 @@ import HoverMenu from './HoverMenu.vue'
 <template>
   <v-app-bar color="white" dark height="64" >
     <v-spacer></v-spacer>
+    <router-link to ='/'>
     <HoverMenu title="Home" class="menu-btn">
       <v-list class="d-flex flex-row">
         <v-list-item>
@@ -22,10 +23,10 @@ import HoverMenu from './HoverMenu.vue'
         <v-list-item >
           Hahaha
           <v-list-item-title>1</v-list-item-title>
-        </v-list-item>     
-                             
+        </v-list-item>                           
       </v-list>
     </HoverMenu>
+    </router-link>
         <HoverMenu title="Shop" class="menu-btn">
       <v-list>
         <v-list-item>

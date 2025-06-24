@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import About from './About.vue';
-import FeaturedCategories from '@/pages/FeaturedCategories.vue'
-import DeliveryAndReturnPolicy from '@/pages/DeliveryAndReturnPolicy.vue'
-import About2 from './About2.vue';
-import Product from './Product.vue';
-import paralax from '@/pages/paralax.vue';
-import FeedBack from './FeedBack.vue';
-import ImageUpDown from './ImageUpDown.vue';
-import HoverImage from './HoverImage.vue';
+import About from '@/components/home/About.vue';
+import FeaturedCategories from '@/components/home/FeaturedCategories.vue';
+import DeliveryAndReturnPolicy from '@/components/home/DeliveryAndReturnPolicy.vue';
+import About2 from '@/components/home/About2.vue';
+import Product from '@/components/home/Product.vue';
+import paralax from '@/components/home/paralax.vue';
+import FeedBack from '@/components/home/FeedBack.vue';
+import ImageUpDown from '@/components/home/ImageUpDown.vue';
+import HoverImage from '@/components/home/HoverImage.vue';
+import SliderProduct from '@/components/home/SliderProduct.vue';
+
 
 </script>
 
@@ -20,6 +22,7 @@ import HoverImage from './HoverImage.vue';
     <paralax/>
     <ImageUpDown/>
     <FeedBack/>
+    <SliderProduct/>
     <HoverImage/>
     
 </template>
