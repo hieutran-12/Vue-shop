@@ -22,8 +22,8 @@
           breakpoints: {
             1280: { perPage: 3 },
             960: { perPage: 2 },
-            600: { perPage: 1 }
-          }
+            600: { perPage: 1 },
+          },
         }"
         aria-label="Our Products"
         class="cursor-grab custom-splide"
@@ -38,11 +38,21 @@
             :class="{ 'hovered-info': hoveredProductId === product.id }"
           >
             <div class="sale-badge" v-if="product.onSale">
-              <v-chip color="black" text-color="white" size="large" class="font-weight-bold">Sale</v-chip>
+              <v-chip
+                color="black"
+                text-color="white"
+                size="large"
+                class="font-weight-bold"
+                >Sale</v-chip
+              >
             </div>
 
-            <img
-              :src="hoveredProductId === product.id ? product.hoverImage : product.image"
+            <v-img
+              :src="
+                hoveredProductId === product.id
+                  ? product.hoverImage
+                  : product.image
+              "
               :alt="product.name"
               height="540px"
               width="417px"
@@ -59,14 +69,19 @@
                 v-if="hoveredProductId === product.id"
                 class="select-overlay d-flex align-center justify-center"
               >
-                <v-btn variant="text" class="text-decoration-underline font-weight-bold">
+                <v-btn
+                  variant="text"
+                  class="text-decoration-underline font-weight-bold"
+                >
                   Select Options <v-icon end>mdi-arrow-right</v-icon>
                 </v-btn>
               </div>
-            <img>
+            </v-img>
 
             <v-card-text class="text-center pa-4 transition-border">
-              <h3 class="text-h6 font-weight-medium mb-2">{{ product.name }}</h3>
+              <h3 class="text-h6 font-weight-medium mb-2">
+                {{ product.name }}
+              </h3>
               <div class="price-section">
                 <span class="text-body-2 text-grey-darken-1">Starts at</span>
                 <span
@@ -75,7 +90,9 @@
                 >
                   € {{ product.originalPrice }}
                 </span>
-                <span class="font-weight-bold ml-2">€ {{ product.currentPrice }}</span>
+                <span class="font-weight-bold ml-2"
+                  >€ {{ product.currentPrice }}</span
+                >
               </div>
             </v-card-text>
           </v-card>
@@ -108,62 +125,98 @@ const products = ref<Product[]>([
   {
     id: 1,
     name: "Urbane Sleeveless Dress",
-    image: new URL("@/assets/SliderProduct/home-shop-11.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/SliderProduct/home-shop-11.2-1.jpg", import.meta.url).href,
+    image: new URL(
+      "@/assets/SliderProduct/home-shop-11.1-1.jpg",
+      import.meta.url
+    ).href,
+    hoverImage: new URL(
+      "@/assets/SliderProduct/home-shop-11.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 16.83,
     originalPrice: 18.85,
     onSale: true,
-    collection: "summer"
+    collection: "summer",
   },
   {
     id: 2,
     name: "Satin Sleeveless Dress",
-    image: new URL("@/assets/SliderProduct/home-shop-12.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/SliderProduct/home-shop-12.2-1.jpg", import.meta.url).href,
+    image: new URL(
+      "@/assets/SliderProduct/home-shop-12.1-1.jpg",
+      import.meta.url
+    ).href,
+    hoverImage: new URL(
+      "@/assets/SliderProduct/home-shop-12.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 20.78,
     onSale: true,
-    collection: "summer"
+    collection: "summer",
   },
   {
     id: 3,
     name: "Flossy Classic Dress",
-    image: new URL("@/assets/SliderProduct/home-shop-13.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/SliderProduct/home-shop-13.2-1.jpg", import.meta.url).href,
+    image: new URL(
+      "@/assets/SliderProduct/home-shop-13.1-1.jpg",
+      import.meta.url
+    ).href,
+    hoverImage: new URL(
+      "@/assets/SliderProduct/home-shop-13.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 34.65,
     originalPrice: 42.17,
     onSale: true,
-    collection: "summer"
+    collection: "summer",
   },
   {
     id: 4,
     name: "Swag Long Dress",
-    image: new URL("@/assets/SliderProduct/home-shop-14.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/SliderProduct/home-shop-14.2-1.jpg", import.meta.url).href,
+    image: new URL(
+      "@/assets/SliderProduct/home-shop-14.1-1.jpg",
+      import.meta.url
+    ).href,
+    hoverImage: new URL(
+      "@/assets/SliderProduct/home-shop-14.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 22.77,
     originalPrice: 28.8,
     onSale: true,
-    collection: "summer"
+    collection: "summer",
   },
   {
     id: 5,
     name: "Winter Coat Dress",
-    image: new URL("@/assets/SliderProduct/home-shop-15.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/SliderProduct/home-shop-15.2-1.jpg", import.meta.url).href,
+    image: new URL(
+      "@/assets/SliderProduct/home-shop-15.1-1.jpg",
+      import.meta.url
+    ).href,
+    hoverImage: new URL(
+      "@/assets/SliderProduct/home-shop-15.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 45.99,
     originalPrice: 52.0,
     onSale: true,
-    collection: "winter"
-  }
+    collection: "winter",
+  },
 ]);
 
 const filteredProducts = computed(() =>
-  products.value.filter((product) => product.collection === activeCollection.value)
+  products.value.filter(
+    (product) => product.collection === activeCollection.value
+  )
 );
 </script>
 
 <style scoped>
 .special-product {
-  background: linear-gradient(135deg, rgba(248, 248, 248, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(248, 248, 248, 0.9) 0%,
+    rgba(240, 240, 240, 0.9) 100%
+  );
 }
 
 .custom-splide {
@@ -239,6 +292,6 @@ const filteredProducts = computed(() =>
 }
 
 .hovered-info {
-  border: 1px solid #D1C2BB;
+  border: 1px solid #d1c2bb;
 }
 </style>

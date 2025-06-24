@@ -11,8 +11,8 @@
         breakpoints: {
           1024: { perPage: 3 },
           768: { perPage: 2 },
-          480: { perPage: 1 }
-        }
+          480: { perPage: 1 },
+        },
       }"
       aria-label="Product Carousel"
     >
@@ -24,7 +24,11 @@
       >
         <div class="image-wrapper">
           <img
-            :src="hoveredProductId === product.id ? product.hoverImage : product.image"
+            :src="
+              hoveredProductId === product.id
+                ? product.hoverImage
+                : product.image
+            "
             class="product-img"
             alt="Product Image"
           />
@@ -34,7 +38,6 @@
     </Splide>
   </div>
 </template>
-
 
 <script setup lang="ts">
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
@@ -59,8 +62,12 @@ const products = ref<Product[]>([
   {
     id: 1,
     name: "Urbane Sleeveless Dress",
-    image: new URL("@/assets/Product1/home-shop-1.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/Product1/home-shop-1.2-1.jpg", import.meta.url).href,
+    image: new URL("@/assets/Product1/home-shop-1.1-1.jpg", import.meta.url)
+      .href,
+    hoverImage: new URL(
+      "@/assets/Product1/home-shop-1.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 16.83,
     originalPrice: 18.85,
     onSale: true,
@@ -69,8 +76,12 @@ const products = ref<Product[]>([
   {
     id: 2,
     name: "Satin Sleeveless Dress",
-    image: new URL("@/assets/Product1/home-shop-2.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/Product1/home-shop-2.2-1.jpg", import.meta.url).href,
+    image: new URL("@/assets/Product1/home-shop-2.1-1.jpg", import.meta.url)
+      .href,
+    hoverImage: new URL(
+      "@/assets/Product1/home-shop-2.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 20.78,
     onSale: true,
     collection: "summer",
@@ -78,8 +89,12 @@ const products = ref<Product[]>([
   {
     id: 3,
     name: "Flossy Classic Dress",
-    image: new URL("@/assets/Product1/home-shop-3.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/Product1/home-shop-3.2-1.jpg", import.meta.url).href,
+    image: new URL("@/assets/Product1/home-shop-3.1-1.jpg", import.meta.url)
+      .href,
+    hoverImage: new URL(
+      "@/assets/Product1/home-shop-3.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 34.65,
     originalPrice: 42.17,
     onSale: true,
@@ -88,8 +103,12 @@ const products = ref<Product[]>([
   {
     id: 4,
     name: "Swag Long Dress",
-    image: new URL("@/assets/Product1/home-shop-4.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/Product1/home-shop-4.2-1.jpg", import.meta.url).href,
+    image: new URL("@/assets/Product1/home-shop-4.1-1.jpg", import.meta.url)
+      .href,
+    hoverImage: new URL(
+      "@/assets/Product1/home-shop-4.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 22.77,
     originalPrice: 28.8,
     onSale: true,
@@ -98,8 +117,12 @@ const products = ref<Product[]>([
   {
     id: 5,
     name: "Winter Coat Dress",
-    image: new URL("@/assets/Product1/home-shop-5.1-1.jpg", import.meta.url).href,
-    hoverImage: new URL("@/assets/Product1/home-shop-5.2-1.jpg", import.meta.url).href,
+    image: new URL("@/assets/Product1/home-shop-5.1-1.jpg", import.meta.url)
+      .href,
+    hoverImage: new URL(
+      "@/assets/Product1/home-shop-5.2-1.jpg",
+      import.meta.url
+    ).href,
     currentPrice: 45.99,
     originalPrice: 52.0,
     onSale: true,
@@ -110,7 +133,7 @@ const products = ref<Product[]>([
 const filteredProducts = computed(() =>
   activeCollection.value === "all"
     ? products.value
-    : products.value.filter(p => p.collection === activeCollection.value)
+    : products.value.filter((p) => p.collection === activeCollection.value)
 );
 </script>
 
