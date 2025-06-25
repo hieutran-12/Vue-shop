@@ -110,10 +110,7 @@ const ShopSingleStyles = [
       </HoverMenu>
       <HoverMenu title="Page" class="menu-btn">
         <v-list>
-          <v-list-item>
-            Hahaha
-            <v-list-item-title>1</v-list-item-title>
-          </v-list-item>
+          <router-link to="/FAQ"><v-list-item>FAQ</v-list-item></router-link>
         </v-list>
       </HoverMenu>
       <v-spacer></v-spacer>
