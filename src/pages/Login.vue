@@ -1,16 +1,20 @@
-<script setup>
+<route lang="yaml">
+meta:
+  layout: login
+</route>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const container = (ref < HTMLElement) | (null > null);
+const container = ref<HTMLElement | null>(null);
 
 const email = ref("");
 const password = ref("");
 const error = ref("");
 
-// Toggle form
+// Toggle giữa Sign In / Sign Up
 onMounted(() => {
   const registerBtn = document.getElementById("register");
   const loginBtn = document.getElementById("login");
@@ -24,95 +28,97 @@ onMounted(() => {
   });
 });
 
-// Gọi API đăng nhập
+// Xử lý đăng nhập
 const handleLogin = async () => {
   try {
     const res = await axios.post(
       "https://api.cyberonegate.com/Authorize/SignIn",
       {
-        reCaptcha: "test", // tạm
+        reCaptcha: "test",
         email: email.value,
         password: password.value,
         rememberMe: true,
       },
-      {
-        headers: { "Content-Type": "application/json-patch+json" },
-      }
+      { headers: { "Content-Type": "application/json-patch+json" } }
     );
 
     localStorage.setItem("token", res.data.token);
-    router.push("/index");
+    router.push("/");
   } catch (err) {
-    // Hiện lỗi lên UI để bạn thấy
-    error.value = err.response?.data?.errors
-      ? JSON.stringify(err.response.data.errors)
+    const e = err as any;
+    error.value = e.response?.data?.errors
+      ? JSON.stringify(e.response.data.errors)
       : "Đăng nhập thất bại!";
   }
 };
 </script>
+
 <template>
-  <div class="container" id="container" ref="container">
-    <!-- Sign Up -->
-    <div class="form-container sign-up">
-      <form @submit.prevent>
-        <h1>Create Account</h1>
-        <div class="social-icons">
-          <a href="#" class="icon"
-            ><i class="fa-brands fa-google-plus-g"></i
-          ></a>
-          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-        <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="button">Sign up</button>
-      </form>
-    </div>
+  <div class="login-page">
+    <div class="container" id="container" ref="container">
+      <!-- Sign Up -->
+      <div class="form-container sign-up">
+        <form @submit.prevent>
+          <h1>Create Account</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"
+              ><i class="fa-brands fa-google-plus-g"></i
+            ></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button type="button">Sign up</button>
+        </form>
+      </div>
 
-    <!-- Sign In -->
-    <div class="form-container sign-in">
-      <form @submit.prevent="handleLogin">
-        <h1>Sign In</h1>
-        <div class="social-icons">
-          <a href="#" class="icon"
-            ><i class="fa-brands fa-google-plus-g"></i
-          ></a>
-          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-        <span>or use your email for login</span>
-        <input type="email" v-model="email" placeholder="Email" />
-        <input type="password" v-model="password" placeholder="Password" />
-        <a href="#">Forget Your password</a>
-        <button type="submit">Sign in</button>
-        <p v-if="error" style="color: red; margin-top: 10px">{{ error }}</p>
-      </form>
-    </div>
+      <!-- Sign In -->
+      <div class="form-container sign-in">
+        <form @submit.prevent="handleLogin">
+          <h1>Sign In</h1>
+          <div class="social-icons">
+            <a href="#" class="icon"
+              ><i class="fa-brands fa-google-plus-g"></i
+            ></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+          <span>or use your email for login</span>
+          <input type="email" v-model="email" placeholder="Email" />
+          <input type="password" v-model="password" placeholder="Password" />
+          <a href="#">Forget Your password</a>
+          <button type="submit">Sign in</button>
+          <p v-if="error" style="color: red; margin-top: 10px">{{ error }}</p>
+        </form>
+      </div>
 
-    <!-- Toggle Panels -->
-    <div class="toggle-contaier">
-      <div class="toggle">
-        <div class="toggle-panel toggle-left">
-          <h1>Welcome Back!</h1>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
-          <button class="hidden" id="login">Sign in</button>
-        </div>
-        <div class="toggle-panel toggle-right">
-          <h1>Hello Friend</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime!
-          </p>
-          <button class="hidden" id="register">Sign up</button>
+      <!-- Toggle Panels -->
+      <div class="toggle-contaier">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Welcome Back!</h1>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <button class="hidden" id="login">Sign in</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h1>Hello Friend</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <button class="hidden" id="register">Sign up</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped>
 /* (CSS giữ nguyên như bạn đã viết) */
 </style>
@@ -124,8 +130,8 @@ const handleLogin = async () => {
   box-sizing: border-box;
 }
 
-body {
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+.login-page {
+  background: linear-gradient(to right, rgba(86, 94, 65), rgba(210, 227, 164));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,7 +169,7 @@ body {
 }
 
 .container button {
-  background-color: #512da8;
+  background-color: rgb(65, 88, 5);
   color: #fff;
   font-size: 12px;
   padding: 10px 45px;
@@ -277,9 +283,8 @@ body {
   border-radius: 0 150px 100px 0;
 }
 .toggle {
-  background-color: #512da8;
+  background-color: rgb(65, 88, 5);
   height: 100%;
-  background: linear-gradient(to right #5c6bc0, #512da8);
   color: #fff;
   position: relative;
   left: -100%;

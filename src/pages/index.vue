@@ -11,11 +11,13 @@ import HoverImage from "@/components/home/HoverImage.vue";
 import SliderProduct from "@/components/home/SliderProduct.vue";
 import { useRouter } from "vue-router";
 import { onMounted } from "vue";
-
 const router = useRouter();
 
 onMounted(() => {
-  router.replace("/Login");
+  const token = localStorage.getItem("token");
+  if (!token) {
+    router.replace("/Login"); // chỉ chuyển nếu chưa login
+  }
 });
 </script>
 
