@@ -9,6 +9,14 @@ import FeedBack from "@/components/home/FeedBack.vue";
 import ImageUpDown from "@/components/home/ImageUpDown.vue";
 import HoverImage from "@/components/home/HoverImage.vue";
 import SliderProduct from "@/components/home/SliderProduct.vue";
+import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+
+const router = useRouter();
+
+onMounted(() => {
+  router.replace("/Login");
+});
 </script>
 
 <template>
