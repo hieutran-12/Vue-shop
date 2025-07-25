@@ -42,7 +42,7 @@ const handleLogin = async () => {
       { headers: { "Content-Type": "application/json-patch+json" } }
     );
 
-    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data));
     router.push("/");
   } catch (err) {
     const e = err as any;
