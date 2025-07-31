@@ -1,38 +1,46 @@
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+function dangXuat() {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("user_info");
+  router.push("/login"); // hoặc '/signin'
+}
 // Không cần gì thêm nếu không có logic
-import HoverMenu from './HoverMenu.vue'
+import HoverMenu from "./HoverMenu.vue";
 </script>
 <template>
-  <v-app-bar color="white" dark height="64" >
-    <v-spacer></v-spacer>
-    <router-link to ='/'>
-    <HoverMenu title="Home" class="menu-btn">
-      <v-list class="d-flex flex-row">
-        <v-list-item>
-          Hahaha
-          <v-list-item-title>1</v-list-item-title>
-        </v-list-item>
-        <v-list-item >
-          Hahaha
-          <v-list-item-title>1</v-list-item-title>
-        </v-list-item>  
-        <v-list-item >
-          Hahaha
-          <v-list-item-title>1</v-list-item-title>
-        </v-list-item>  
-        <v-list-item >
-          Hahaha
-          <v-list-item-title>1</v-list-item-title>
-        </v-list-item>                           
-      </v-list>
-    </HoverMenu>
+  <v-app-bar color="white" dark height="64">
+    <v-spacer />
+    <router-link to="/">
+      <HoverMenu title="Home" class="menu-btn">
+        <v-list class="d-flex flex-row">
+          <v-list-item>
+            Hahaha
+            <v-list-item-title>1</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            Hahaha
+            <v-list-item-title>1</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            Hahaha
+            <v-list-item-title>1</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            Hahaha
+            <v-list-item-title>1</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </HoverMenu>
     </router-link>
-        <HoverMenu title="Shop" class="menu-btn">
+    <HoverMenu title="Shop" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
           <v-list-item-title>1</v-list-item-title>
-        </v-list-item>                        
+        </v-list-item>
       </v-list>
     </HoverMenu>
     <HoverMenu title="About" class="menu-btn">
@@ -40,15 +48,15 @@ import HoverMenu from './HoverMenu.vue'
         <v-list-item>
           Hahaha
           <v-list-item-title>1</v-list-item-title>
-        </v-list-item>                        
+        </v-list-item>
       </v-list>
     </HoverMenu>
-        <HoverMenu title="Blogs" class="menu-btn">
+    <HoverMenu title="Blogs" class="menu-btn">
       <v-list>
         <v-list-item>
           Hahaha
           <v-list-item-title>1</v-list-item-title>
-        </v-list-item>                        
+        </v-list-item>
       </v-list>
     </HoverMenu>
     <HoverMenu title="Page" class="menu-btn">
@@ -56,18 +64,19 @@ import HoverMenu from './HoverMenu.vue'
         <v-list-item>
           Hahaha
           <v-list-item-title>1</v-list-item-title>
-        </v-list-item>                        
+        </v-list-item>
       </v-list>
     </HoverMenu>
+
     <v-spacer></v-spacer>
-    <v-toolbar-title style="text-align: center;">My website</v-toolbar-title>
+    <v-toolbar-title style="text-align: center">My website</v-toolbar-title>
     <v-spacer></v-spacer>
     <HoverMenu title="USD, $" icon="mdi-chevron-down" class="menu-btn">
       <v-list>
         <v-list-item>
           <v-list-item-title>USD</v-list-item-title>
           <v-list-item-title>VND</v-list-item-title>
-        </v-list-item>                        
+        </v-list-item>
       </v-list>
     </HoverMenu>
     <!-- Icon tìm kiếm -->
@@ -86,12 +95,10 @@ import HoverMenu from './HoverMenu.vue'
       <v-icon>mdi-shopping-outline</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-  </v-app-bar> 
+  </v-app-bar>
 </template>
 <style>
 .v-app-bar {
   position: static !important;
 }
 </style>
-
-

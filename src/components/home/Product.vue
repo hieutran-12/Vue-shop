@@ -22,18 +22,20 @@
         @mouseenter="hoveredProductId = product.id"
         @mouseleave="hoveredProductId = null"
       >
-        <div class="image-wrapper">
-          <img
-            :src="
-              hoveredProductId === product.id
-                ? product.hoverImage
-                : product.image
-            "
-            class="product-img"
-            alt="Product Image"
-          />
-        </div>
-        <div class="product-name">{{ product.name }}</div>
+        <router-link :to="`/product/${product.id}`">
+          <div class="image-wrapper">
+            <img
+              :src="
+                hoveredProductId === product.id
+                  ? product.hoverImage
+                  : product.image
+              "
+              class="product-img"
+              alt="Product Image"
+            />
+          </div>
+          <div class="product-name">{{ product.name }}</div>
+        </router-link>
       </SplideSlide>
     </Splide>
   </div>

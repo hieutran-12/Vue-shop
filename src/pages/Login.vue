@@ -13,7 +13,7 @@ const container = ref<HTMLElement | null>(null);
 const email = ref("");
 const password = ref("");
 const error = ref("");
-
+const rememberMe = ref(false);
 // Toggle giữa Sign In / Sign Up
 onMounted(() => {
   const registerBtn = document.getElementById("register");
@@ -34,21 +34,28 @@ const handleLogin = async () => {
     const res = await axios.post(
       "https://api.cyberonegate.com/Authorize/SignIn",
       {
-        reCaptcha: "test",
+        reCaptcha: "token", // gửi token thực
         email: email.value,
         password: password.value,
-        rememberMe: true,
+        rememberMe: rememberMe.value,
       },
-      { headers: { "Content-Type": "application/json-patch+json" } }
+      {
+        headers: {
+          "x-api-key": "reqres-free-v1",
+        },
+      }
     );
 
-    localStorage.setItem("user", JSON.stringify(res.data));
+    const userData = JSON.stringify(res.data);
+    if (rememberMe.value) {
+      localStorage.setItem("user", userData);
+    } else {
+      sessionStorage.setItem("user", userData);
+    }
     router.push("/");
   } catch (err) {
     const e = err as any;
-    error.value = e.response?.data?.errors
-      ? JSON.stringify(e.response.data.errors)
-      : "Đăng nhập thất bại!";
+    error.value = e.response?.data?.error || "Đăng nhập thất bại!";
   }
 };
 </script>
@@ -95,6 +102,10 @@ const handleLogin = async () => {
           <span>or use your email for login</span>
           <input type="email" v-model="email" placeholder="Email" />
           <input type="password" v-model="password" placeholder="Password" />
+          <label>
+            <input type="checkbox" v-model="rememberMe" />
+            Remember Me
+          </label>
           <a href="#">Forget Your password</a>
           <button type="submit">Sign in</button>
           <p v-if="error" style="color: red; margin-top: 10px">{{ error }}</p>
@@ -119,9 +130,7 @@ const handleLogin = async () => {
     </div>
   </div>
 </template>
-<style scoped>
-/* (CSS giữ nguyên như bạn đã viết) */
-</style>
+<style scoped></style>
 
 <style scoped>
 * {

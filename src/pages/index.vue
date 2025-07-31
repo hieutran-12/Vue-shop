@@ -14,9 +14,14 @@ import { onMounted } from "vue";
 const router = useRouter();
 
 onMounted(() => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("user");
   if (!token) {
     router.replace("/Login"); // chỉ chuyển nếu chưa login
+  }
+  const savedUser =
+    localStorage.getItem("user") || sessionStorage.getItem("user");
+  if (savedUser) {
+    router.push("/"); // Chuyển luôn nếu đã login
   }
 });
 </script>

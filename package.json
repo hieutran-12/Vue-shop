@@ -18,7 +18,8 @@
     "@splidejs/vue-splide": "^0.6.12",
     "axios": "^1.10.0",
     "vue": "^3.5.13",
-    "vuetify": "^3.8.1"
+    "vue3-recaptcha-v2": "^2.1.0",
+    "vuetify": "^3.9.3"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
