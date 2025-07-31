@@ -119,10 +119,13 @@ const ShopSingleStyles = [
       <HoverMenu title="Page" class="menu-btn">
         <v-list>
           <router-link to="/FAQ"><v-list-item>FAQ</v-list-item></router-link>
+          <router-link to="/Map"><v-list-item>Map</v-list-item></router-link>
         </v-list>
       </HoverMenu>
       <v-spacer></v-spacer>
-      <v-toolbar-title style="text-align: center">My website</v-toolbar-title>
+      <v-toolbar-title style="text-align: center; padding-left: 4%"
+        >My website</v-toolbar-title
+      >
       <v-spacer></v-spacer>
       <HoverMenu title="USD, $" icon="mdi-chevron-down" class="menu-btn">
         <v-list>
@@ -183,7 +186,6 @@ const ShopSingleStyles = [
   ) !important;
 }
 .user-menu {
-  padding-left: 5%;
 }
 .user-menu {
   position: relative;
