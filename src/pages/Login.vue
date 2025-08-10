@@ -4,16 +4,18 @@ meta:
 </route>
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import axios from "axios";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const container = ref<HTMLElement | null>(null);
 
-const email = ref("");
-const password = ref("");
+// Tài khoản mặc định
+const email = ref("hieutran@gmail.com");
+const password = ref("@Hieu12345");
+
 const error = ref("");
 const rememberMe = ref(false);
+
 // Toggle giữa Sign In / Sign Up
 onMounted(() => {
   const registerBtn = document.getElementById("register");
@@ -28,38 +30,21 @@ onMounted(() => {
   });
 });
 
-// Xử lý đăng nhập
-const handleLogin = async () => {
-  try {
-    const res = await axios.post(
-      "https://api.cyberonegate.com/Authorize/SignIn",
-      {
-        reCaptcha: "token", // gửi token thực
-        email: email.value,
-        password: password.value,
-        rememberMe: rememberMe.value,
-      },
-      {
-        headers: {
-          "x-api-key": "reqres-free-v1",
-        },
-      }
-    );
-
-    const userData = JSON.stringify(res.data);
+// Fake login (không gọi API)
+const handleLogin = () => {
+  if (email.value === "hieutran@gmail.com" && password.value === "@Hieu12345") {
+    const userData = { email: email.value, name: "Hieu Tran" };
     if (rememberMe.value) {
-      localStorage.setItem("user", userData);
+      localStorage.setItem("user", JSON.stringify(userData));
     } else {
-      sessionStorage.setItem("user", userData);
+      sessionStorage.setItem("user", JSON.stringify(userData));
     }
     router.push("/");
-  } catch (err) {
-    const e = err as any;
-    error.value = e.response?.data?.error || "Đăng nhập thất bại!";
+  } else {
+    error.value = "Tài khoản hoặc mật khẩu không đúng!";
   }
 };
 </script>
-
 <template>
   <div class="login-page">
     <div class="container" id="container" ref="container">
